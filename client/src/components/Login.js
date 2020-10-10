@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import axios from 'axios';
-import useHistory from 'react-router-dom';
+import {useHistory} from 'react-router-dom';
 
 const Login = () => {
 
-  const push = useHistory();
+  const history = useHistory();
 
   const [credentials, setCredentials] = useState({
     username: '',
@@ -24,7 +24,7 @@ const Login = () => {
       .then(res => {
         console.log(res);
         localStorage.setItem('token', res.data.payload);
-        push('/bubbles');
+        history.push('/bubbles');
       })
       .catch(err => {
         console.error(err);

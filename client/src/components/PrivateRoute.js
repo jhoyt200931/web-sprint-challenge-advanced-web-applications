@@ -14,7 +14,7 @@ const PrivateRoute = ({component: Component, ...props}) => {
             <Route {...props} render={() => {
                 if(Authenticated()) {
                     return(
-                        <BubblePage />
+                        <Component />
                     )
                 } else {
                     return <Redirect to='/' />
