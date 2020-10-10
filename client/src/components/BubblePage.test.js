@@ -1,7 +1,7 @@
 import React from "react";
 import { render, screen, wait } from "@testing-library/react";
 import BubblePage from "./BubblePage";
-import {axiosWithAuth as mockAxios} from '../api/axiosWithAuth';
+// import {axiosWithAuth as mockAxios} from '../api/axiosWithAuth';
 
 
 
@@ -15,13 +15,14 @@ const mockColor = {
 
 test("Fetches data and renders the bubbles", async () => {
   // Finish this test
-  mockAxios.mockResolvedValueOnce( mockColor );
-  const {getByTestId} = render(<BubblePage />)
+  const token = "ahuBHejkJJiMDhmODZhZi0zaeLTQ4ZfeaseOGZgesai1jZWYgrTA07i73Gebhu98"
+  localStorage.setItem('token', token);
+  const {getByText} = render(<BubblePage />)
 
   await wait (() => {
-    getByTestId(/color/i);
+    getByText(/blueviolet/i);
   });
-  const color = screen.getByTestId(/color/i);
+  const color = screen.getByText(/blueviolet/i);
 
   expect(color).toBeInTheDocument();
 
